@@ -46,4 +46,10 @@ public class MerchantServiceImpl implements MerchantService {
     public void delete(String merchantId) {
         merchantRepository.delete(merchantId);
     }
+
+    @Override
+    public void updateRating(String merchantId, Double newRating) {
+        merchantRepository.updateRating(merchantId,newRating);
+        System.out.println(newRating);
+    }
 }
