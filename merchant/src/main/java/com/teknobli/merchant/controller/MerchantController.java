@@ -33,4 +33,9 @@ public class MerchantController {
         merchantService.delete(merchantId);
     }
 
+    @PutMapping("/updateRating/{merchantId}/{newRating:.+}")
+    public void updateRating(@PathVariable("merchantId") String merchantId,@PathVariable("newRating") String newRating){
+        merchantService.updateRating(merchantId,Double.parseDouble(newRating));
+    }
+
 }

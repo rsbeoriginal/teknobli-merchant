@@ -11,4 +11,6 @@ public interface MerchantService {
     MerchantDTO update(MerchantDTO merchantDTO);
 
     void delete(String merchantId);
+
+    void updateRating(String merchantId, Double newRating);
 }
