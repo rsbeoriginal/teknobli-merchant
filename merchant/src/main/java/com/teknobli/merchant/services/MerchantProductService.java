@@ -1,25 +1,25 @@
 package com.teknobli.merchant.services;
 
 import com.teknobli.merchant.dto.MerchantProductDTO;
-import com.teknobli.merchant.entity.Merchant;
+import com.teknobli.merchant.entity.MerchantProduct;
 
 import java.util.List;
 
 public interface MerchantProductService {
     MerchantProductDTO add(MerchantProductDTO merchantProductDTO);
 
-    MerchantProductDTO select(String productId);
+    MerchantProductDTO select(String merchantId, String productId);
 
     MerchantProductDTO update(MerchantProductDTO merchantProductDTO);
 
-    void delete(String productId);
+    void delete(String merchantId, String productId);
 
-    List<Merchant> selectAllMerchants(String productId);
+    List<MerchantProduct> selectAllMerchants(String productId);
 
     Integer getMinPrice(String productId);
 
-    void updateStock(String productId);
+    void updateStock(String merchantId, String productId, int newStock);
 
 
-    void updatePrice(String productId);
+    void updatePrice(String merchantId, String productId, int newPrice);
 }

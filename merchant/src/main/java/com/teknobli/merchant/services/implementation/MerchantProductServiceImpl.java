@@ -1,7 +1,6 @@
 package com.teknobli.merchant.services.implementation;
 
 import com.teknobli.merchant.dto.MerchantProductDTO;
-import com.teknobli.merchant.entity.Merchant;
 import com.teknobli.merchant.entity.MerchantProduct;
 import com.teknobli.merchant.repository.MerchantProductRepository;
 import com.teknobli.merchant.services.MerchantProductService;
@@ -14,11 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true,propagation = Propagation.REQUIRES_NEW)
+@Transactional(readOnly = false,propagation = Propagation.REQUIRES_NEW)
 public class MerchantProductServiceImpl implements MerchantProductService {
 
     @Autowired
     MerchantProductRepository merchantProductRepository;
+
 
     @Override
     public MerchantProductDTO add(MerchantProductDTO merchantProductDTO) {
@@ -29,10 +29,11 @@ public class MerchantProductServiceImpl implements MerchantProductService {
         return merchantProductDTODb;
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public MerchantProductDTO select(String productId) {
+    public MerchantProductDTO select(String merchantId, String productId) {
         MerchantProductDTO merchantProductDTO = new MerchantProductDTO();
-        BeanUtils.copyProperties(merchantProductRepository.findOne(productId),merchantProductDTO);
+        BeanUtils.copyProperties(merchantProductRepository.findMerchantProductOne(merchantId,productId),merchantProductDTO);
         return merchantProductDTO;
     }
 
@@ -45,28 +46,35 @@ public class MerchantProductServiceImpl implements MerchantProductService {
         return merchantProductDTODb;
     }
 
+    @Transactional(readOnly = false)
     @Override
-    public void delete(String productId) {
-        merchantProductRepository.delete(productId);
+    public void delete(String merchantId, String productId) {
+        merchantProductRepository.delete(merchantId,productId);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<Merchant> selectAllMerchants(String productId) {
-        return null;
+    public List<MerchantProduct> selectAllMerchants(String productId) {
+        return merchantProductRepository.selectAllMerchants(productId);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Integer getMinPrice(String productId) {
-        return null;
+        return merchantProductRepository.getMinPrice(productId);
     }
 
+    @Transactional
     @Override
-    public void updateStock(String productId) {
-
+    public void updateStock(String merchantId, String productId,int newStock) {
+        merchantProductRepository.updateStock(merchantId,productId,newStock);
     }
 
+    @Transactional
     @Override
-    public void updatePrice(String productId) {
-
+    public void updatePrice(String merchantId, String productId, int newPrice) {
+        merchantProductRepository.updatePrice(merchantId,productId,newPrice);
     }
+
+
 }

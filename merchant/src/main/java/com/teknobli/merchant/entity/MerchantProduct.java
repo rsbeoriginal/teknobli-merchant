@@ -2,10 +2,7 @@ package com.teknobli.merchant.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = MerchantProduct.TABLE_NAME)
@@ -18,7 +15,10 @@ public class MerchantProduct{
 	@GenericGenerator(name="uuid",strategy = "uuid2")
 	private String merchantProductId;
 	private String productId;
-	private String merchantId;
+
+	@ManyToOne
+	@JoinColumn(name = "merchant_id")
+	private Merchant merchant;
 	private int price;
 	private int stock;
 
@@ -38,12 +38,16 @@ public class MerchantProduct{
 		return productId;
 	}
 
-	public void setMerchantId(String merchantId){
-		this.merchantId = merchantId;
+	public static String getTableName() {
+		return TABLE_NAME;
 	}
 
-	public String getMerchantId(){
-		return merchantId;
+	public Merchant getMerchant() {
+		return merchant;
+	}
+
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
 	}
 
 	public int getPrice() {
@@ -62,15 +66,4 @@ public class MerchantProduct{
 		this.stock = stock;
 	}
 
-	@Override
- 	public String toString(){
-		return 
-			"MerchantProduct{" + 
-			"merchantProductId = '" + merchantProductId + '\'' + 
-			",productId = '" + productId + '\'' + 
-			",merchantId = '" + merchantId + '\'' + 
-			",price = '" + price + '\'' + 
-			",stock = '" + stock + '\'' + 
-			"}";
-		}
 }

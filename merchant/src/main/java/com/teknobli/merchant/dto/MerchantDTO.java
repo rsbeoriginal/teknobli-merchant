@@ -3,6 +3,7 @@ package com.teknobli.merchant.dto;
 public class MerchantDTO {
     private String merchantId;
     private String merchantName;
+    private Double rating = 5d;
 
     public void setMerchantId(String merchantId){
         this.merchantId = merchantId;
@@ -20,12 +21,11 @@ public class MerchantDTO {
         return merchantName;
     }
 
-    @Override
-    public String toString(){
-        return
-                "Merchant{" +
-                        "merchantId = '" + merchantId + '\'' +
-                        ",merchantName = '" + merchantName + '\'' +
-                        "}";
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }

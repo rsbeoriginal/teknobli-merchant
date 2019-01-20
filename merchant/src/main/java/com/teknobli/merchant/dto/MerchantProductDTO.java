@@ -1,9 +1,11 @@
 package com.teknobli.merchant.dto;
 
+import com.teknobli.merchant.entity.Merchant;
+
 public class MerchantProductDTO {
     private String merchantProductId;
     private String productId;
-    private String merchantId;
+    private Merchant merchant;
     private int price;
     private int stock;
 
@@ -23,12 +25,12 @@ public class MerchantProductDTO {
         return productId;
     }
 
-    public void setMerchantId(String merchantId){
-        this.merchantId = merchantId;
+    public Merchant getMerchant() {
+        return merchant;
     }
 
-    public String getMerchantId(){
-        return merchantId;
+    public void setMerchant(Merchant merchant) {
+        this.merchant = merchant;
     }
 
     public int getPrice() {
@@ -47,15 +49,4 @@ public class MerchantProductDTO {
         this.stock = stock;
     }
 
-    @Override
-    public String toString(){
-        return
-                "MerchantProduct{" +
-                        "merchantProductId = '" + merchantProductId + '\'' +
-                        ",productId = '" + productId + '\'' +
-                        ",merchantId = '" + merchantId + '\'' +
-                        ",price = '" + price + '\'' +
-                        ",stock = '" + stock + '\'' +
-                        "}";
-    }
 }
