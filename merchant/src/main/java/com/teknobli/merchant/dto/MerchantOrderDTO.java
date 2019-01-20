@@ -3,62 +3,40 @@ package com.teknobli.merchant.dto;
 
 public class MerchantOrderDTO {
 
-    private String merchantProductId;
+    private String merchantOrderId;
     private String productId;
     private String merchantId;
-    private int price;
-    private int stock;
+    private String orderId;
 
-    public void setMerchantProductId(String merchantProductId){
-        this.merchantProductId = merchantProductId;
+    public String getMerchantOrderId() {
+        return merchantOrderId;
     }
 
-    public String getMerchantProductId(){
-        return merchantProductId;
+    public void setMerchantOrderId(String merchantOrderId) {
+        this.merchantOrderId = merchantOrderId;
     }
 
-    public void setProductId(String productId){
-        this.productId = productId;
-    }
-
-    public String getProductId(){
+    public String getProductId() {
         return productId;
     }
 
-    public void setMerchantId(String merchantId){
-        this.merchantId = merchantId;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public String getMerchantId(){
+    public String getMerchantId() {
         return merchantId;
     }
 
-    public int getPrice() {
-        return price;
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public int getStock() {
-        return stock;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    @Override
-    public String toString(){
-        return
-                "MerchantProduct{" +
-                        "merchantProductId = '" + merchantProductId + '\'' +
-                        ",productId = '" + productId + '\'' +
-                        ",merchantId = '" + merchantId + '\'' +
-                        ",price = '" + price + '\'' +
-                        ",stock = '" + stock + '\'' +
-                        "}";
-    }
-
 }
