@@ -50,6 +50,5 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public void updateRating(String merchantId, Double newRating) {
         merchantRepository.updateRating(merchantId,newRating);
-        System.out.println(newRating);
     }
 }
