@@ -25,10 +25,13 @@ public interface MerchantProductRepository extends CrudRepository<MerchantProduc
     @Query("UPDATE MerchantProduct SET price = ?3 WHERE (merchant_id = ?1 AND productId = ?2) ")
     void updatePrice(String merchantId, String productId, int newPrice);
 
-    @Query(value = "FROM MerchantProduct WHERE productId = ?1 ")
+    @Query(value = "FROM MerchantProduct WHERE productId = ?1 ORDER BY price DESC")
     List<MerchantProduct> selectAllMerchants(String productId);
 
     @Modifying
     @Query("DELETE FROM MerchantProduct WHERE (merchant_id = ?1 AND productId = ?2) ")
     void delete(String merchantId, String productId);
+
+    @Query("SELECT COUNT(*) FROM MerchantProduct WHERE merchant_id = ?1")
+    Double getTypesOfProduct(String merchantId);
 }
