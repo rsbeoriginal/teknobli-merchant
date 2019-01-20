@@ -42,7 +42,7 @@ public class MerchantProductController {
     }
 
     @GetMapping("/getMinPrice/{productId}")
-    public Integer getMinPrice(@PathVariable("productId") String productId) {
+    public Double getMinPrice(@PathVariable("productId") String productId) {
         return merchantProductService.getMinPrice(productId);
     }
 

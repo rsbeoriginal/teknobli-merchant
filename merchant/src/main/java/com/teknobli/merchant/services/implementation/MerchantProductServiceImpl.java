@@ -60,7 +60,7 @@ public class MerchantProductServiceImpl implements MerchantProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public Integer getMinPrice(String productId) {
+    public Double getMinPrice(String productId) {
         return merchantProductRepository.getMinPrice(productId);
     }
 

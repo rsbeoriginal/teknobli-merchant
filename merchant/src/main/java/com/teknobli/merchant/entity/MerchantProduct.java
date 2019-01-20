@@ -19,7 +19,7 @@ public class MerchantProduct{
 	@ManyToOne
 	@JoinColumn(name = "merchant_id")
 	private Merchant merchant;
-	private int price;
+	private Double price;
 	private int stock;
 
 	public void setMerchantProductId(String merchantProductId){
@@ -50,11 +50,11 @@ public class MerchantProduct{
 		this.merchant = merchant;
 	}
 
-	public int getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

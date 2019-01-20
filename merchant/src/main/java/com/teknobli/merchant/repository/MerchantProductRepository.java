@@ -15,7 +15,7 @@ public interface MerchantProductRepository extends CrudRepository<MerchantProduc
     MerchantProduct findMerchantProductOne(String merchantId, String productId);
 
     @Query(value = "SELECT MIN(price) FROM MerchantProduct WHERE productId = ?1 AND stock > 0 ")
-    Integer getMinPrice(String productId);
+    Double getMinPrice(String productId);
 
     @Modifying
     @Query("UPDATE MerchantProduct SET stock = ?3 WHERE (merchant_id = ?1 AND productId = ?2) ")

@@ -16,7 +16,7 @@ public interface MerchantProductService {
 
     List<MerchantProduct> selectAllMerchants(String productId);
 
-    Integer getMinPrice(String productId);
+    Double getMinPrice(String productId);
 
     void updateStock(String merchantId, String productId, int newStock);
 
