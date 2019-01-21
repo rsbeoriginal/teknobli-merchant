@@ -1,6 +1,7 @@
 package com.teknobli.merchant.controller;
 
 import com.teknobli.merchant.dto.MerchantOrderDTO;
+import com.teknobli.merchant.ordermicroservices.dto.RecieptDTO;
 import com.teknobli.merchant.services.MerchantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,11 @@ public class MerchantOrderController {
     @GetMapping("/getCount/{merchantId}")
     public int getCount(@PathVariable("merchantId") String merchantId){
         return merchantOrderService.getCount(merchantId);
+    }
+
+    @PostMapping("/validateOrder")
+    public Boolean validateOrder(@RequestBody RecieptDTO recieptDTO){
+        return merchantOrderService.validateOrder(recieptDTO);
     }
 
 }

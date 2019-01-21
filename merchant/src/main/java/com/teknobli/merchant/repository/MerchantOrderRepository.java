@@ -8,4 +8,5 @@ public interface MerchantOrderRepository extends CrudRepository<MerchantOrder,St
 
     @Query(value = "SELECT COUNT(*) FROM MerchantOrder WHERE merchantId = ?1")
     int getCount(String merchantId);
+
 }

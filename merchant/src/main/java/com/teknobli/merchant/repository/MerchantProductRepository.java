@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface MerchantProductRepository extends CrudRepository<MerchantProduct,String> {
+public interface MerchantProductRepository extends CrudRepository<MerchantProduct, String> {
 
 
     @Query("FROM MerchantProduct WHERE (merchant_id = ?1 AND productId = ?2)")
@@ -34,4 +34,7 @@ public interface MerchantProductRepository extends CrudRepository<MerchantProduc
 
     @Query("SELECT COUNT(*) FROM MerchantProduct WHERE merchant_id = ?1")
     Double getTypesOfProduct(String merchantId);
+
+    @Query("SELECT stock FROM MerchantProduct WHERE (merchant_id = ?1 AND productId = ?2)")
+    int getStock(String merchantId, String productId);
 }
