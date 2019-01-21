@@ -46,8 +46,17 @@ public class MerchantOrderServiceImpl implements MerchantOrderService {
                 return false;
             }
         }
-
+        //accept order
+        for(RecieptProductDTO recieptProductDTO: recieptDTO.getRecieptProductDTOList()){
+            acceptOrder(recieptProductDTO);
+        }
         return true;
+    }
+
+    private void acceptOrder(RecieptProductDTO recieptProductDTO) {
+        int currentStock = merchantProductRepository.getStock(recieptProductDTO.getMerchantId(),recieptProductDTO.getProductId());
+        int newStock = currentStock - recieptProductDTO.getQuantity();
+        merchantProductRepository.updateStock(recieptProductDTO.getMerchantId(),recieptProductDTO.getProductId(),newStock);
     }
 
     private boolean checkStock(RecieptProductDTO recieptProductDTO) {
