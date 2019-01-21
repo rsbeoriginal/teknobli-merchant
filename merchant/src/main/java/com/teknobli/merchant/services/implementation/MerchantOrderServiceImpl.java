@@ -56,12 +56,14 @@ public class MerchantOrderServiceImpl implements MerchantOrderService {
     private void acceptOrder(RecieptProductDTO recieptProductDTO) {
         int currentStock = merchantProductRepository.getStock(recieptProductDTO.getMerchantId(),recieptProductDTO.getProductId());
         int newStock = currentStock - recieptProductDTO.getQuantity();
+        System.out.println(currentStock + " : " + newStock);
         merchantProductRepository.updateStock(recieptProductDTO.getMerchantId(),recieptProductDTO.getProductId(),newStock);
     }
 
     private boolean checkStock(RecieptProductDTO recieptProductDTO) {
 
         int currentStock = merchantProductRepository.getStock(recieptProductDTO.getMerchantId(),recieptProductDTO.getProductId());
+        System.out.println("Current Stock :" + currentStock + " required :" + recieptProductDTO.getQuantity());
         if(recieptProductDTO.getQuantity()>currentStock){
             return false;
         }

@@ -29,6 +29,7 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public MerchantDTO select(String merchantId) {
         MerchantDTO merchantDTO = new MerchantDTO();
+        System.out.println("MID: " + merchantId);
         BeanUtils.copyProperties(merchantRepository.findOne(merchantId),merchantDTO);
         return merchantDTO;
     }

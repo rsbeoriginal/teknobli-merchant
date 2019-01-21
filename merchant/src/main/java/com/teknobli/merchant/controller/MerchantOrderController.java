@@ -25,6 +25,7 @@ public class MerchantOrderController {
 
     @PostMapping("/validateOrder")
     public Boolean validateOrder(@RequestBody RecieptDTO recieptDTO){
+        System.out.println("validateOrder");
         return merchantOrderService.validateOrder(recieptDTO);
     }
 
