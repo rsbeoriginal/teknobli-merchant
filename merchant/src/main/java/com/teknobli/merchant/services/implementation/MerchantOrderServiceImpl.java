@@ -40,8 +40,9 @@ public class MerchantOrderServiceImpl implements MerchantOrderService {
 
     @Override
     public Boolean validateOrder(RecieptDTO recieptDTO) {
-
+        System.out.println("validateOrder()");
         for(RecieptProductDTO recieptProductDTO: recieptDTO.getRecieptProductDTOList()){
+            System.out.println("product: " + recieptProductDTO.getProductName());
             if(!checkStock(recieptProductDTO)){
                 return false;
             }

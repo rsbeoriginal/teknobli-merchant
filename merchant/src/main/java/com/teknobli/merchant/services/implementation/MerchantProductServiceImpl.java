@@ -115,6 +115,15 @@ public class MerchantProductServiceImpl implements MerchantProductService {
         merchantProductRepository.updatePrice(merchantId, productId, newPrice);
     }
 
+    @Override
+    public Integer getTotalStock(String productId) {
+        Integer stock = merchantProductRepository.getTotalStock(productId);
+        if(stock!=null){
+            return stock;
+        }
+        return 0;
+    }
+
 
     private class MerchantComparator implements Comparator<MerchantProduct> {
         @Override

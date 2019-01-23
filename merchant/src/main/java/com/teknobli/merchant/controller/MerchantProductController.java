@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/merchant/product")
+@CrossOrigin
 public class MerchantProductController {
 
     @Autowired
@@ -44,6 +45,11 @@ public class MerchantProductController {
     @GetMapping("/getMinPrice/{productId}")
     public Double getMinPrice(@PathVariable("productId") String productId) {
         return merchantProductService.getMinPrice(productId);
+    }
+
+    @GetMapping("/getTotalStock/{productId}")
+    public Integer getTotalStock(@PathVariable("productId") String productId){
+        return merchantProductService.getTotalStock(productId);
     }
 
     @PutMapping("/updateStock/{merchantId}/{productId}/{newStock}")

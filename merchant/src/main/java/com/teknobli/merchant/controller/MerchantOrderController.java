@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("merchant/order")
+@CrossOrigin
 public class MerchantOrderController {
 
     @Autowired

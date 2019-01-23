@@ -37,4 +37,7 @@ public interface MerchantProductRepository extends CrudRepository<MerchantProduc
 
     @Query("SELECT stock FROM MerchantProduct WHERE (merchant_id = ?1 AND productId = ?2)")
     int getStock(String merchantId, String productId);
+
+    @Query("SELECT COUNT(*) FROM MerchantProduct WHERE productId = ?1")
+    Integer getTotalStock(String productId);
 }

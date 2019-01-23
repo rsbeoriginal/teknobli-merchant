@@ -22,4 +22,6 @@ public interface MerchantProductService {
 
 
     void updatePrice(String merchantId, String productId, int newPrice);
+
+    Integer getTotalStock(String productId);
 }
